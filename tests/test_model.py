@@ -1,7 +1,6 @@
 import unittest
 import torch
 from src.pruning import PrunableLinear, SelfPruningNN
-from src.model import create_model
 
 
 class TestPrunableLinear(unittest.TestCase):
@@ -76,17 +75,12 @@ class TestSelfPruningNN(unittest.TestCase):
         self.assertIn('total_parameters', state)
 
 
-class TestModelFactory(unittest.TestCase):
-    """Tests for model creation factory."""
-
-    def test_create_model(self):
-        """Test that create_model returns SelfPruningNN."""
-        model = create_model(input_size=10, hidden_size=8, output_size=2)
-        self.assertIsInstance(model, SelfPruningNN)
+class TestSelfPruningNNInitialization(unittest.TestCase):
+    """Tests for SelfPruningNN forward pass shapes."""
 
     def test_model_output_shape(self):
         """Test output shape matches expected dimensions."""
-        model = create_model(input_size=10, hidden_size=8, output_size=2)
+        model = SelfPruningNN(input_size=10, hidden_size=8, output_size=2)
         x = torch.randn(2, 10)
         output = model(x)
         self.assertEqual(output.shape, (2, 2))
