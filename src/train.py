@@ -7,8 +7,8 @@ import numpy as np
 from tqdm import tqdm
 from torchvision import datasets, transforms
 
-from pruning import SelfPruningNN
-from utils import (
+from .pruning import SelfPruningNN
+from .utils import (
     calculate_sparsity, 
     evaluate_model, 
     report_network_state,
@@ -245,7 +245,7 @@ if __name__ == '__main__':
     # Define lambda values for comparison (low, medium, high)
     lambda_values = [0.0001, 0.001, 0.01]
     
-    # Run experiments on CIFAR-10
+    # running on the cifar10 
     results = run_lambda_comparison(
         lambda_values=lambda_values,
         input_size=32 * 32 * 3,
@@ -259,5 +259,5 @@ if __name__ == '__main__':
         data_dir='./data'
     )
     
-    # Print final comparison
+    # orinting the final comparision
     print_final_comparison(results)
