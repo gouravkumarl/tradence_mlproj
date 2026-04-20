@@ -27,9 +27,4 @@ This launches an experiment comparing multiple sparsity regularization strengths
 - `src/train.py` — CIFAR-10 loader, training loop, and lambda comparison experiments
 - `src/utils.py` — evaluation utilities, sparsity metrics, and reporting helpers
 
-## Why This Project is Job-Worthy
-- Demonstrates custom PyTorch module design
-- Shows expertise in sparse model training
-- Uses a real computer vision benchmark (CIFAR-10)
-- Includes a reproducible experiment pipeline
-- Provides clear documentation and a polished delivery
+
