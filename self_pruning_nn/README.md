@@ -1,34 +1,35 @@
 # Self-Pruning Neural Network
 
 ## Overview
-This project implements a self-pruning neural network that dynamically adjusts its architecture during training to improve efficiency and performance. The network utilizes learnable gate parameters and L1 sparsity regularization to achieve pruning.
+This repository implements a self-pruning neural network with a custom PyTorch layer for learned gate-based sparsity. The model is trained and evaluated on CIFAR-10, and the code is structured for repeatable experiments and clear results.
 
 ## Setup Instructions
-To set up the project, ensure you have Python installed on your machine. Then, create a virtual environment and install the required dependencies.
-
 ```bash
-# Create a virtual environment
-python -m venv venv
-
-# Activate the virtual environment
-# On Windows
-venv\Scripts\activate
-# On macOS/Linux
+cd /home/gourav/Desktop/trancedance/self-pruning-neural-network
+python3 -m venv venv
 source venv/bin/activate
-
-# Install the required packages
 pip install -r self_pruning_nn/requirements.txt
 ```
 
-## How to Run the Project
-To run the self-pruning neural network, execute the main script located in `self_pruning_nn/self_pruning_nn.py`. Ensure that you have your data prepared in the `data` directory.
-
+## How to Run
 ```bash
-python self_pruning_nn/self_pruning_nn.py
+python3 src/train.py
 ```
 
-## Output Files
-The project will generate output files that include model weights, pruning statistics, and visualizations of the training process. These files will be saved in the designated output directory (to be specified in the main script).
+This launches an experiment comparing multiple sparsity regularization strengths and prints:
+- train/test loss
+- test accuracy
+- gate sparsity
+- final pruning comparison table
 
-## Documentation
-For detailed results and analysis of the experiments conducted with the self-pruning neural network, refer to the `self_pruning_nn/report.md` file.
+## Core Files
+- `src/pruning.py` — custom `PrunableLinear` layer and self-pruning model
+- `src/train.py` — CIFAR-10 loader, training loop, and lambda comparison experiments
+- `src/utils.py` — evaluation utilities, sparsity metrics, and reporting helpers
+
+## Why This Project is Job-Worthy
+- Demonstrates custom PyTorch module design
+- Shows expertise in sparse model training
+- Uses a real computer vision benchmark (CIFAR-10)
+- Includes a reproducible experiment pipeline
+- Provides clear documentation and a polished delivery
